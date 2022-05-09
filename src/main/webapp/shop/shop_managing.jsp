@@ -1,3 +1,5 @@
+<%@page import="delivery_project.com.vo.CategoryVo"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -6,6 +8,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="<%=request.getContextPath() %>/public/js/shop_ajax_managing.js" defer="defer"></script>
+<%
+List<CategoryVo> cate_list = (List<CategoryVo>)request.getAttribute("cate_list");
+%>
 </head>
 <body>
 	<%@ include file="/header_nav.jsp" %>
@@ -131,11 +136,9 @@
 		  			<p class="input-group">
 		  				<label for="shopFormSellType" class="input-group-text">판매 분류</label>
 		  				<select name="sell_type" class="form-control" id="shopFormSellType">
-		  					<option value="1">한식</option>
-		  					<option value="2">중식</option>
-		  					<option value="3">일식</option>
-		  					<option value="4">양식</option>
-		  					<option value="5">디저트</option>
+		  					<%for(CategoryVo c: cate_list){ %>
+		  					<option value="<%=Integer.toString(c.getCate_num())%>">(<%=c.getCate_num() %>)<%=c.getSell_type() %></option>
+		  					<%} %>
 		  				</select>
 		  			</p>
 		  			<p class="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -221,11 +224,9 @@
 		  			<p class="input-group">
 		  				<label for="shopModifyFormSellType" class="input-group-text">판매 분류</label>
 		  				<select name="sell_type" class="form-control" id="shopModifyFormSellType">
-		  					<option value="1">한식</option>
-		  					<option value="2">중식</option>
-		  					<option value="3">일식</option>
-		  					<option value="4">양식</option>
-		  					<option value="5">디저트</option>
+		  					<%for(CategoryVo c: cate_list){ %>
+		  					<option value="<%=Integer.toString(c.getCate_num())%>">(<%=c.getCate_num() %>)<%=c.getSell_type() %></option>
+		  					<%} %>
 		  				</select>
 		  			</p>
 		  			<p class="d-grid gap-2 d-md-flex justify-content-md-end">
